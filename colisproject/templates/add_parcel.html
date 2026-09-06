@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{%block title  %}
+ <p>Formulaire de saisie des colis - ColisApp</p>
+{%endblock%}
+
+{% block content %}
+
+    <h1> <p>Ajout des colis</p></h1>
+
+    <form method = "POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit"> Enregistrer le colis </button>
+
+    </form>
+    
+    <a href="/">Retour à l'accueil</a>
+{% endblock %}

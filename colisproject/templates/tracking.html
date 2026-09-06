@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{%block title  %}
+ <p>Page de suivi des colis - ColisApp</p>
+{%endblock%}
+
+{% block content %}
+
+    <h1> <p>Suivi d'un colis</p></h1>
+
+    <form method = "POST">
+        {% csrf_token %}
+       <input type="text" name="tracking_number" id="tracking_number" placeholder="numero de suivi">
+        <button type="submit"> Suivre un colis </button>
+        <p>----------------------------------</p>
+        {% if parcel %}
+            <h3>Résultat</h3>
+            <p>Numéro : {{ parcel.tracking_number }}</p>
+            <p>Status : {{ parcel.status }}</p>
+            <p>Poids : {{ parcel.weight }}</p>
+            <p>Destination : {{ parcel.adress_arr }}</p>
+        {% elif error %}
+            <p>Erreur: {{ error }}</p>
+        {% endif %}
+
+    </form>
+    
+    <a href="/">Retour à l'accueil</a>
+{% endblock %}

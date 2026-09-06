@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}
+    Accueil - ColisApp
+{% endblock %}
+
+{% block content %}
+    <h1>ColisApp</h1>
+     <p>Bienveue sur le site de livraison de colis</p>
+    {% if nb_colis == 0 %}
+        <p>Il n'y aucun colis dans l'entrepot</p>
+    {% else %}
+       <p>Il y a actuellement {{ nb_colis }} colis dans l'entrepot {{ Nom_entrepo }}</p>
+       <a href="/parcels">Voir les colis de l'entrepot</a><p> 
+       <a href="/register">Ajouter un nouveau colis</a><p> 
+       <a href="/tracking">Suivre un colis</a><p> 
+    {% endif %}
+{% endblock %}
