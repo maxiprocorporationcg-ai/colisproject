@@ -28,7 +28,19 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG') == 'True'
 
-ALLOWED_HOSTS = ['*']
+DEBUG = False
+
+ALLOWED_HOSTS = [
+    "maxipro-corporation.tech",
+    "www.maxipro-corporation.tech",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://maxipro-corporation.tech",
+    "https://www.maxipro-corporation.tech",
+]
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
 # Application definition
