@@ -24,5 +24,7 @@ urlpatterns = [
     path('parcels/', parcels_page),
     path('register/', add_parcel_page),
     path('tracking/', tracking_page),
+    path('add_client/', add_client),
+    path('list_client/', list_client),
     
 ]

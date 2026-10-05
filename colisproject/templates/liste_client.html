@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}
+Liste des clients
+{% endblock %}
+{% block content %}
+    <h1>Liste des clients - ColisApp</h1>
+    <ul>
+        {% for c in client %}
+        <li>{{ c }}</li>
+        {% endfor %}
+        <a href="/">Retour à l'accueil ok</a>
+    </ul>
+</body>
+</html>
+{% endblock %}
