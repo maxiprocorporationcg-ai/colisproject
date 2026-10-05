@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .forms import RegisterParcelForm
-from .models import Parcel
+from .forms import RegisterParcelForm,RegisterClientForm
+from .models import Parcel,Client
 
 #liste colis
 #colis_data = ["Colis1","Colis2","Colis3","Colis4","Colis5",]
@@ -40,4 +40,17 @@ def tracking_page(request):
             except Parcel.DoesNotExist:
                  error = "Aucun colis n'existe avec ce numéro"
      return render(request, "tracking.html", { "parcel":parcel, "error": error})
-     
+def add_client(request):
+     if request.method == 'POST':
+        form = RegisterClientForm(request.POST)
+        if form.is_valid():
+            form.save() #Enregistrement dans la base
+            return HttpResponse("Client Enregistré ---"+"<a href='/'>Retour à l'accueil</a>")
+        else:
+            return HttpResponse("Formualaire invalide!!")
+     else:
+        form = RegisterClientForm
+        return render(request, "ajout_client.html", context={'form': form})
+
+def list_client(request):
+     return render(request, "liste_client.html", context={'client': Client.objects.all()})

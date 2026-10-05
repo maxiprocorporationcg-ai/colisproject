@@ -54,7 +54,12 @@ class Parcel(models.Model):
         return f"Colis N°{self.id} - {self.weight}kg"
 
 class Client(models.Model):
-    id = models.IntegerField(primary_key=True)
     nom = models.CharField(max_length=150)
     prenom = models.CharField(max_length=150)
     date_n = models.DateField(null=True, blank=True)
+
+    def save(self, *args, **kwargs):            
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.id} - {self.nom} - {self.prenom} - {self.date_n}"
